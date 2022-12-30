@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="functions.js"></script>
+   
+   <script>
+   // ADD LIST
+   function addListInMain(numberOfListItems) {
+        const ulElement = document.createElement('ul');
+
+        for (let i = 0; i < numberOfListItems; i++) {
+            const liItem = document.createElement('li');
+            liItem.textContent = `Item #${i+1}`
+
+            ulElement.appendChild(liItem);
+        }
+
+    // specify place of insertion
+      const main = document.querySelector('main');
+         main.appendChild(ulElement);
+    }
+
+
+    // REMOVE SPECIFIED DIV
+    function removeDivInMain(idName) {
+        const divToRemove = document.querySelector('div#'+idName);
+        
+            if(divToRemove != undefined) {
+            divToRemove.remove();
+            }
+    }
+
+    
+
+
+    </script>
+</head>
+<body>
+    <script>
+        console.log("salt> Start of body");
+    </script>
+    <main>
+        <div name="content" class="big bold bright">Content 1</div>
+        <div class="big bold" id="companyName">Content 2</div>
+        <div name="content" class="big">Content 3</div>
+   </main>
+
+
+    <script>
+    // call function
+    const companyName = myFunctions.getCompanyName();
+    
+    // manipulate html
+    // select first node with name="content" attribute
+    const companyNameElement = document.querySelector('[name="content"]');
+    companyNameElement.innerHTML = companyName + ' set using a query selector by id';
+
+    // select all nodes with class="bold" attribute    
+    const boldNodes = document.querySelectorAll('.bold');
+    for (let i = 0; i < boldNodes.length; i++) {
+        boldNodes[i].innerHTML += ' ... and bold selected with query';
+    }
+    addListInMain(10);
+    removeDivInMain('companyName');
+    </script>
+</body>
+</html>
