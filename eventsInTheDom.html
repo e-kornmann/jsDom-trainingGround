@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+
+      // conditional formatting
+      function addStyleBasedOfContent(element, content) {
+        const convertedNumber = Number(content);
+      
+        if(Number.isNaN(convertedNumber)) {
+          return;
+        }
+        if(convertedNumber < 0) {
+          element.classList.add('negativeResult');
+          return;
+        }
+        element.classList.add('positiveResult');
+      }
+      
+      // search for elements and add values to class property.
+      function addResultStyling() {
+        const mainResultElements = document.querySelectorAll('.mainResult');
+      
+        for (let i = 0; i < mainResultElements.length; i++) {
+          // this code below takes out the text from the HTML and stores it in content
+          const content = mainResultElements[i].textContent;
+      
+          // selects the elements with corresponding content and passes it back to the function
+          addStyleBasedOfContent(mainResultElements[i], content);
+        
+        }
+      }
+      
+      addResultStyling()
+      
+      
+      
+      </script>
+</head>
+<body>
+    <main>
+        <h1 class="mainResult"> 1000</h1>
+        <h1 class="mainResult"> -1000</h1>
+        <h1 class="mainResult">A name - not a number</h1>
+    </main>
+
+</body>
+</html>
