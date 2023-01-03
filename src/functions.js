@@ -54,11 +54,53 @@
   
   }
 },
-
   buttonSmash : function ()  {
   const btn = document.getElementById('btnInversion');
   btn.onclick = myFunctions.invertColorsOfResults;
 },
+///////////////////////////////////////////////////////
+    //  FETCH
+  getUsers: function (element) {
+    fetch('https://randomuser.me/api/?results=50')
+      .then(response => response.json())
+      .then(data => {
+
+        // create container
+        const userList = document.createElement('div');
+        userList.classList.add('wrapper');
+      
+        // create persona's (1 by 1)
+        for (let i = 0; i < data.results.length; i++) {
+
+          const user = data.results[i];
+
+            const userHeading = document.createElement('h2');
+            userHeading.textContent = `${user.name.title} ${user.name.first} ${user.name.last}`;
+            userList.appendChild(userHeading);
+
+            const userImage = document.createElement('img');
+            userImage.src = `${user.picture.large}`;
+
+            const userDiv = document.createElement('div');
+            userDiv.classList.add('persona');
+            if (user.gender == 'female') {
+              userDiv.classList.add('female');
+            }
+
+            
+            userDiv.appendChild(userImage);  
+            userDiv.appendChild(userHeading);                       
+            userList.appendChild(userDiv);
+            
+        }
+
+    // specify place of insertion
+      elSelector = document.querySelector(element);
+      elSelector.appendChild(userList);
+    })
+    
+  }
 }
   console.log("salt> Functions loaded");
     
+

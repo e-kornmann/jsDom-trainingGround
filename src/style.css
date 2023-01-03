@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+:root {
+  --male: rgba(53, 90, 255, 0.8);
+  --female: rgb(255, 136, 162, 0.8);
+  --text: #050505;
+  --bgcolor: #e7e7ea;
+  --angle: 8px;
+  --angle-o: 4px;
+}
+
+
+
+body {
+  background-color: var(--bgcolor);
+  font-family: "Inconsolata", monospace;
+  font-size: 1.13em;
+}
+
+
+
+   body::after {
+      content: "";
+      background: url(grid.png);
+      background-size: 74px;
+      opacity: 0.25;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: fixed;
+      z-index: -4;   
+    }
+
+    
+
+  img {
+    position: absolute;
+    border-radius: 5px;
+    width: 140px;
+    bottom: 20px;
+    left: 20px;      
+    z-index: -1;  
+  }
+
+.mainResult {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 80px;
+  }
+  .negativeResult {
+    background-color: red;
+    color: white;
+  }
+  .positiveResult {
+    background-color: green;
+    color: white;
+  }
+
+  
+.wrapper {  
+  
+  text-align: center;
+  max-width: 910px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+
+  h2 {
+    text-align: left;
+    padding-left: 05px;
+    font-size: 13px;
+    line-height: 1.38em;
+    color: var(--text);
+    font-weight: 300;
+    margin: 25px 20px 0px 20px;
+    border-top: 1px solid var(--text);
+    padding-top: 8px;
+    min-height: 500px;
+
+  }
+
+  h3 {
+    text-align: left;
+    padding-left: 05px;
+    font-size: 13px;
+    line-height: 1.38em;
+    color: var(--text);
+    font-weight: 300;
+    letter-spacing: 0.03em;
+   
+  }
+
+
+ 
+
+
+
+  .male {
+    background-color: var(--male);
+  }
+
+  
+  .perdsona:hover {
+    position: relative;
+     
+  }
+  .female {
+    background-color: var(--female);
+  }
