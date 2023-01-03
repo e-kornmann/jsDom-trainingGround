@@ -9,9 +9,27 @@ myFunctions = {
 
 
 
+
+  
+  
+
+searchFilter : function (lijst) {
+  let filteredList = lijst;
+
+  const search = () => {
+    const input = document.getElementById('searchbar').value.toLowerCase();
+    filteredList = lijst.filter(user => user.name.first.toLowerCase().includes(input));
+  }
+  search();
+      
+  return filteredList;
+  },
+  
+
+
+
+
   filters : function (lijst) {
-       
-   
    
     // declare gender
     const ageCheckbox = (document.querySelector("input[name=age]").checked);
@@ -29,7 +47,10 @@ myFunctions = {
     let fAgeFilter = ageFilter.filter(user => user.gender === 'female'); 
     let mAgeFilter = ageFilter.filter(user => user.gender === 'male'); 
 
-  
+
+
+
+    
 
 
     //filters
@@ -62,41 +83,50 @@ myFunctions = {
     if (maleCheckbox && femaleCheckbox && !ageCheckbox) {
       filteredList = lijst;
     }
-    
-    myFunctions.updateList(filteredList);
+       
+    return filteredList;
     },
   
 
   
 
   filterTrigger : function (lijst) {
-    
+
+    // apply filters
+    let filtered = myFunctions.filters(lijst);
        // age filter
     const checkbox = document.querySelector("input[name=age]");
     checkbox.addEventListener('click', function() {
-    myFunctions.filters(lijst);
-    })
+    myFunctions.updateList(myFunctions.filters(lijst));
+    });
 
     // male filter
     const checkboxm = document.querySelector("input[name=male]");
     checkboxm.addEventListener('click', function() {
-    myFunctions.filters(lijst);
+    myFunctions.updateList(myFunctions.filters(lijst));
     });
   
     // female filter
     const checkboxf = document.querySelector("input[name=female]");
     checkboxf.addEventListener('click', function() {
-    myFunctions.filters(lijst);
+    myFunctions.updateList(myFunctions.filters(lijst));
+    });
+
+    // search filter
+    const searchbox = document.getElementById('searchbar');
+    searchbox.addEventListener('keyup', () => {
+      myFunctions.updateList(myFunctions.searchFilter(myFunctions.filters(lijst)));
     });
     
-
   },
+
+  
    
   
   // create header
     createUserNameHeader : function (user) {
       const userHeading = document.createElement('h2');
-      userHeading.textContent = `${user.name.title} ${user.name.first} ${user.name.last}`
+      userHeading.textContent = `${user.name.first} ${user.name.last}`
       return userHeading;
     },
   
@@ -160,8 +190,6 @@ myFunctions = {
   
   //end of myFunctions:
    }
-  
-  
-    console.log("salt> Functions loaded");
+      console.log("salt> Functions loaded");
       
   

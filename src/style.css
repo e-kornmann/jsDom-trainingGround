@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
 :root {
-  --male: rgba(53, 90, 255, 0.8);
-  --female: rgb(255, 136, 162, 0.8);
+  --male: rgb(67, 102, 255);
+  --female: rgb(255, 146, 170);
   --text: #050505;
   --bgcolor: #e7e7ea;
   --angle: 8px;
   --angle-o: 4px;
+  --form-control-color: rebeccapurple;
+    --form-control-disabled: #959495;
 }
 
 
@@ -21,8 +23,8 @@ body {
    body::after {
       content: "";
       background: url(grid.png);
-      background-size: 74px;
-      opacity: 0.25;
+      background-size: 25px;
+      opacity: 0.45;
       top: 0;
       left: 0;
       bottom: 0;
@@ -57,8 +59,7 @@ body {
 
   
 .wrapper {  
-  
-  text-align: center;
+   text-align: center;
   max-width: 910px;
   margin-left: auto;
   margin-right: auto;
@@ -68,14 +69,14 @@ body {
 
   h2 {
     text-align: left;
-    padding-left: 05px;
-    font-size: 13px;
-    line-height: 1.38em;
+    padding-left: 3px;
+    font-size: 15px;
+    line-height: 1.08em;
     color: var(--text);
     font-weight: 300;
-    margin: 25px 20px 0px 20px;
+    margin: 22px 20px 0px 20px;
     border-top: 1px solid var(--text);
-    padding-top: 8px;
+    padding-top: 6px;
     min-height: 500px;
 
   }
@@ -107,4 +108,83 @@ body {
   }
   .female {
     background-color: var(--female);
+  }
+
+
+  
+  
+  
+  
+ 
+ 
+  
+  .form-control {
+    text-align: left;
+    padding-left: 05px;
+    font-size: 13px;
+    line-height: 1.38em;
+    color: var(--text);
+    font-weight: 300;
+    letter-spacing: 0.03em;
+   
+    line-height: 1.1;
+    display: grid;
+    grid-template-columns: 1em auto;
+    gap: 0.8em;
+  }
+  
+  .form-control + .form-control {
+    margin-top: 1em;
+    margin-right: 15px;
+  }
+  
+  .form-control--disabled {
+    color: var(--form-control-disabled);
+    cursor: not-allowed;
+  }
+  
+  input[type="checkbox"] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    /* Remove most all native input styles */
+    appearance: none;
+    /* For iOS < 15 */
+    background-color: var(--form-background);
+    /* Not removed via appearance */
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+    
+  }
+  
+  input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+    /* Windows High Contrast Mode */
+    background-color: CanvasText;
+    
+  }
+  
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+   
+  }
+  
+  input[type="checkbox"]:focus {
+    outline: max(0px, 0.00em) solid currentColor;
+    outline-offset: max(1px, 0.00em);
+    
   }
