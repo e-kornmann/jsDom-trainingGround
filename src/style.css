@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
 :root {
-  --male: rgb(67, 102, 255);
+  --male: rgb(46, 112, 255);
   --female: rgb(255, 146, 170);
   --text: #050505;
   --bgcolor: #e7e7ea;
@@ -59,11 +59,21 @@ body {
 
   
 .wrapper {  
-   text-align: center;
-  max-width: 910px;
+  text-align: center;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
 
+}
+
+
+.container {
+  text-align: center;
+  max-width: 260px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 200px;
+  padding-top: 50px;
 }
 
 
@@ -101,12 +111,8 @@ body {
     background-color: var(--male);
   }
 
-  
-  .perdsona:hover {
-    position: relative;
      
-  }
-  .female {
+ .female {
     background-color: var(--female);
   }
 
@@ -126,7 +132,6 @@ body {
     color: var(--text);
     font-weight: 300;
     letter-spacing: 0.03em;
-   
     line-height: 1.1;
     display: grid;
     grid-template-columns: 1em auto;
@@ -188,3 +193,17 @@ body {
     outline-offset: max(1px, 0.00em);
     
   }
+
+
+#az {
+
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+  height: 100px;
+  cursor: pointer;
+  border-top: 1px solid black;
+  grid-template-columns: 7em auto;
+  z-index: 5;
+
+}
